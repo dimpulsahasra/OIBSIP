@@ -1,0 +1,613 @@
+/* =========================================
+   LOVE SYNC - MAIN STYLE
+========================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Poppins", Arial, sans-serif;
+    background: linear-gradient(135deg, #ffe4ec, #f7e8ff, #e5f0ff);
+    color: #333;
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.page {
+    width: 100%;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 25px;
+    padding: 35px;
+    margin: 20px auto;
+    box-shadow: 0 15px 40px rgba(160, 80, 130, 0.15);
+}
+
+
+/* =========================================
+   HEADINGS
+========================================= */
+
+h1 {
+    font-size: 42px;
+    color: #d63384;
+    margin-bottom: 15px;
+}
+
+h2 {
+    font-size: 30px;
+    color: #c22572;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 21px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+p {
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+button {
+    border: none;
+    border-radius: 14px;
+    padding: 13px 22px;
+    margin: 8px 5px;
+    background: linear-gradient(
+        135deg,
+        #ff4f91,
+        #d63384
+    );
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s ease;
+    box-shadow: 0 6px 15px rgba(214, 51, 132, 0.2);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(214, 51, 132, 0.3);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+
+/* =========================================
+   INPUTS
+========================================= */
+
+input[type="text"],
+input[type="url"] {
+    width: 100%;
+    max-width: 450px;
+    padding: 14px 17px;
+    border: 2px solid #f2b8d0;
+    border-radius: 13px;
+    outline: none;
+    font-size: 16px;
+    background: white;
+    margin: 8px 0;
+}
+
+input[type="text"]:focus,
+input[type="url"]:focus {
+    border-color: #d63384;
+    box-shadow: 0 0 0 4px rgba(214, 51, 132, 0.1);
+}
+
+
+/* =========================================
+   HOME
+========================================= */
+
+.hero {
+    text-align: center;
+    padding: 70px 20px;
+}
+
+.hero h1 {
+    font-size: 55px;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: 0 auto 25px;
+    font-size: 19px;
+}
+
+
+/* =========================================
+   QUESTION CARD
+========================================= */
+
+.question-card {
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 24px;
+    padding: 25px;
+    margin: 25px auto;
+    max-width: 1050px;
+    box-shadow: 0 8px 30px rgba(120, 60, 100, 0.12);
+    border: 1px solid rgba(214, 51, 132, 0.08);
+}
+
+.question-number {
+    display: inline-block;
+    background: #ffe0ec;
+    color: #c22572;
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+
+/* =========================================
+   PICTURE OPTIONS
+========================================= */
+
+.picture-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 15px;
+}
+
+
+/* Hide radio button */
+
+.image-option input[type="radio"] {
+    display: none;
+}
+
+
+/* =========================================
+   PICTURE CARD
+========================================= */
+
+.picture-card {
+    min-height: 210px;
+    background: linear-gradient(
+        145deg,
+        #fff,
+        #fff3f8
+    );
+
+    border: 2px solid transparent;
+    border-radius: 22px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+
+    text-align: center;
+}
+
+
+/* Image */
+
+.picture-card img {
+    width: 95px;
+    height: 95px;
+    object-fit: contain;
+    margin-bottom: 12px;
+}
+
+
+/* Emoji fallback */
+
+.emoji-fallback {
+    width: 95px;
+    height: 95px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 75px;
+    line-height: 1;
+
+    margin-bottom: 12px;
+}
+
+
+/* Option text */
+
+.picture-card span {
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+}
+
+
+/* Hover */
+
+.picture-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #f39ac0;
+
+    box-shadow:
+        0 12px 25px rgba(
+            214,
+            51,
+            132,
+            0.15
+        );
+}
+
+
+/* Selected */
+
+.image-option input[type="radio"]:checked
++ .picture-card {
+
+    border-color: #d63384;
+
+    background: linear-gradient(
+        145deg,
+        #ffe0ec,
+        #f9d7ff
+    );
+
+    transform: scale(1.03);
+
+    box-shadow:
+        0 10px 30px rgba(
+            214,
+            51,
+            132,
+            0.25
+        );
+}
+
+
+/* Selected tick */
+
+.image-option input[type="radio"]:checked
++ .picture-card::after {
+
+    content: "✓";
+
+    position: absolute;
+
+    top: 10px;
+    right: 12px;
+
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #d63384;
+    color: white;
+
+    font-size: 18px;
+    font-weight: bold;
+}
+
+
+/* Needed for tick position */
+
+.image-option {
+    position: relative;
+    display: block;
+}
+
+
+/* =========================================
+   CREATOR SECTION
+========================================= */
+
+#creator,
+#creatorQuiz,
+#share,
+#player,
+#quiz,
+#result {
+    max-width: 1100px;
+    margin: auto;
+}
+
+
+/* =========================================
+   SHARE LINK
+========================================= */
+
+#shareLink {
+    width: 100%;
+    max-width: 800px;
+    padding: 14px;
+    border: 2px solid #f2b8d0;
+    border-radius: 12px;
+    font-size: 15px;
+}
+
+
+/* =========================================
+   RESULT
+========================================= */
+
+#result {
+    text-align: center;
+}
+
+#score {
+    font-size: 55px;
+    font-weight: 800;
+    color: #d63384;
+}
+
+#percentage {
+    font-size: 40px;
+    font-weight: 800;
+    color: #7b2cbf;
+    margin: 10px 0;
+}
+
+#resultMessage {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 20px 0 30px;
+}
+
+
+/* =========================================
+   ANSWER RESULT
+========================================= */
+
+.answer-result {
+    background: white;
+    border-radius: 20px;
+    padding: 22px;
+    margin: 18px auto;
+    text-align: left;
+    max-width: 850px;
+    box-shadow: 0 8px 25px rgba(100, 50, 100, 0.1);
+}
+
+.answer-result h3 {
+    color: #c22572;
+}
+
+
+.answer-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 12px;
+    background: #fafafa;
+}
+
+.answer-row img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+}
+
+.correct {
+    background: #d9fbe5;
+    color: #16803c;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 700;
+    margin-top: 12px;
+}
+
+.wrong {
+    background: #ffe0e0;
+    color: #d62828;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 700;
+    margin-top: 12px;
+}
+
+
+/* =========================================
+   BACK BUTTON
+========================================= */
+
+.back-btn {
+    background: white;
+    color: #d63384;
+    border: 2px solid #f2b8d0;
+}
+
+.back-btn:hover {
+    background: #ffe8f0;
+}
+
+
+/* =========================================
+   HOW IT WORKS
+========================================= */
+
+.steps {
+    max-width: 700px;
+    margin: 20px auto;
+}
+
+.steps li {
+    padding: 12px;
+    margin: 8px 0;
+    background: #fff4f8;
+    border-radius: 12px;
+    list-style-position: inside;
+}
+
+
+/* =========================================
+   CATEGORY CHECKBOXES
+========================================= */
+
+.category-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.category-container label {
+    background: white;
+    padding: 12px 18px;
+    border-radius: 15px;
+    border: 2px solid #f3c1d7;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.category-container label:hover {
+    background: #fff0f6;
+}
+
+.category-container input {
+    margin-right: 7px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .page {
+        padding: 20px 12px;
+    }
+
+    .card {
+        padding: 22px 15px;
+    }
+
+    h1 {
+        font-size: 34px;
+    }
+
+    h2 {
+        font-size: 25px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .picture-options {
+        grid-template-columns: 1fr;
+    }
+
+    .picture-card {
+        min-height: 190px;
+    }
+
+    .question-card {
+        padding: 18px;
+    }
+
+    .picture-card img {
+        width: 85px;
+        height: 85px;
+    }
+
+    .emoji-fallback {
+        width: 85px;
+        height: 85px;
+        font-size: 65px;
+    }
+
+    #score {
+        font-size: 45px;
+    }
+
+    #percentage {
+        font-size: 34px;
+    }
+
+    button {
+        width: 100%;
+        margin: 6px 0;
+    }
+}
+
+
+/* =========================================
+   SMALL SCREEN
+========================================= */
+
+@media (max-width: 420px) {
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .picture-card {
+        min-height: 175px;
+    }
+
+    .picture-card span {
+        font-size: 16px;
+    }
+
+    .question-card h3 {
+        font-size: 18px;
+    }
+}
