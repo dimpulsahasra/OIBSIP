@@ -1,239 +1,94 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>LoveSync ❤️</title>
-
+    <meta name="description" content="A simple, responsive BMI Calculator built for the Oasis Infobyte Python Programming Internship.">
+    <title>BMI Calculator | Oasis Infobyte</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
-
 <body>
+    <main class="container">
+        <header class="header">
+            <div class="logo">BMI<span>+</span></div>
+            <p class="tagline">YOUR PERSONAL HEALTH COMPANION</p>
+        </header>
 
-    <!-- HOME -->
-    <section id="home" class="page">
+        <section class="calculator">
+            <div class="intro">
+                <span class="eyebrow">HEALTH & WELLNESS</span>
+                <h1>BMI Calculator</h1>
+                <p>Understand your body. Take a step toward a healthier you.</p>
+            </div>
 
-        <div class="hero">
+            <form id="bmiForm">
+                <div class="field">
+                    <label for="weight">Weight <span>(kg)</span></label>
+                    <input
+                        type="number"
+                        id="weight"
+                        placeholder="e.g. 60"
+                        min="1"
+                        max="500"
+                        step="any"
+                        required
+                    >
+                </div>
 
-            <div class="heart">💗</div>
+                <div class="field">
+                    <label for="height">Height <span>(cm)</span></label>
+                    <input
+                        type="number"
+                        id="height"
+                        placeholder="e.g. 165"
+                        min="50"
+                        max="300"
+                        step="any"
+                        required
+                    >
+                </div>
 
-            <h1>LoveSync ❤️</h1>
-
-            <p>
-                Create a cute quiz and discover
-                who really knows you. ✨
-            </p>
-
-            <button onclick="showSection('creator')">
-                💕 Create My Quiz
-            </button>
-
-            <button onclick="showSection('how')">
-                ❓ How does it work?
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- HOW IT WORKS -->
-    <section id="how" class="page hidden">
-
-        <div class="card">
-
-            <button class="back" onclick="showSection('home')">
-                ← Back
-            </button>
-
-            <h2>How does it work? 💡</h2>
-
-            <ol>
-                <li>Create your quiz.</li>
-                <li>Answer the questions yourself.</li>
-                <li>Generate your share link.</li>
-                <li>Send the link to your friend.</li>
-                <li>They answer the questions.</li>
-                <li>Their individual score appears at the end. ❤️</li>
-            </ol>
-
-        </div>
-
-    </section>
-
-
-    <!-- CREATOR -->
-    <section id="creator" class="page hidden">
-
-        <div class="card">
-
-            <button class="back" onclick="showSection('home')">
-                ← Back
-            </button>
-
-            <h2>Create Your Quiz 💕</h2>
-
-            <p>
-                Your name will be shown to the person
-                taking the quiz.
-            </p>
-
-            <input
-                type="text"
-                id="creatorName"
-                placeholder="Enter your name"
-            >
-
-            <button onclick="startCreator()">
-                🎀 Start Creating
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- CREATOR QUESTIONS -->
-    <section id="creatorQuiz" class="page hidden">
-
-        <div class="card">
-
-            <h2>Choose Your Answers 💗</h2>
-
-            <p>
-                Select the answer that is correct for YOU.
-            </p>
-
-            <div id="creatorQuestions"></div>
-
-            <button onclick="saveCreatorAnswers()">
-                🔗 Create Share Link
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- SHARE -->
-    <section id="share" class="page hidden">
-
-        <div class="card">
-
-            <div class="success">🎉</div>
-
-            <h2>Your Quiz Is Ready! ❤️</h2>
-
-            <p>Send this link to your friend:</p>
-
-            <div class="share-box">
-
-                <input
-                    type="text"
-                    id="shareLink"
-                    readonly
-                >
-
-                <button onclick="copyLink()">
-                    📋 Copy
+                <button type="submit" class="calculate-btn">
+                    Calculate My BMI <span>→</span>
                 </button>
+                <button type="reset" class="reset-btn">Clear values</button>
+            </form>
 
-            </div>
+            <p id="errorMessage" class="error" role="alert"></p>
 
-            <p class="small">
-                Your friend can open this link and
-                take your LoveSync quiz. 💕
+            <section id="result" class="result" aria-live="polite" hidden>
+                <p class="result-label">YOUR BMI RESULT</p>
+                <div id="bmiValue" class="bmi-value">0.0</div>
+                <h2 id="bmiCategory"></h2>
+                <p id="resultMessage"></p>
+
+                <div class="bmi-scale">
+                    <span>Underweight</span>
+                    <span>Normal</span>
+                    <span>Overweight</span>
+                    <span>Obesity</span>
+                </div>
+                <div class="scale-bar">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <p id="healthyRange" class="healthy-range"></p>
+            </section>
+
+            <p class="disclaimer">
+                BMI is a screening measure, not a diagnosis. Interpretation may differ
+                for children, teenagers, pregnant people, and some athletes.
             </p>
+        </section>
 
-            <button onclick="goHome()">
-                🏠 Home
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- PLAYER NAME -->
-    <section id="player" class="page hidden">
-
-        <div class="card">
-
-            <div class="heart">💗</div>
-
-            <h2>LoveSync Quiz 💕</h2>
-
-            <p id="quizCreator">
-                Someone wants to know how well you know them!
-            </p>
-
-            <input
-                type="text"
-                id="playerName"
-                placeholder="Enter your name"
-            >
-
-            <button onclick="startPlayerQuiz()">
-                💕 Start Quiz
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- PLAYER QUIZ -->
-    <section id="quiz" class="page hidden">
-
-        <div class="card">
-
-            <h2>How Well Do You Know Me? 👀❤️</h2>
-
-            <div id="quizQuestions"></div>
-
-            <button onclick="submitQuiz()">
-                💖 Submit Quiz
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- RESULT -->
-    <section id="result" class="page hidden">
-
-        <div class="card result-card">
-
-            <div class="trophy">🏆</div>
-
-            <h2>Your Result ❤️</h2>
-
-            <div class="score" id="score">
-                0 / 0
-            </div>
-
-            <div class="percentage" id="percentage">
-                0%
-            </div>
-
-            <h3 id="resultMessage"></h3>
-
-            <div id="results"></div>
-
-            <button onclick="goHome()">
-                🏠 Back Home
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <script src="script.js"></script>
-
+        <footer>
+            <p>Built with care | Oasis Infobyte Python Programming Internship</p>
+        </footer>
+    </main>
 </body>
-
 </html>
